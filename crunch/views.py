@@ -57,7 +57,6 @@ class Crunch(FormView):
                 params = {key.replace(' ', '_').replace('\"', ''): val for key, val, in
                           zip(headers, position_locked_vals)}
 
-
                 info = ZohoInfo()
 
                 info.Company = params.get('Company_Name', None)
@@ -84,8 +83,6 @@ class Crunch(FormView):
 
 
 def export(request):
-
-
     data = list(ZohoInfo.objects.all())
     headers = [f.name for f in ZohoInfo._meta.get_fields()]
     headers.remove('Ready_To_Zoho')
