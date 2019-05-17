@@ -9,4 +9,5 @@ from crunch import views
 
 urlpatterns = [
     path("", views.Crunch.as_view(), name="crunch"),
+    path("export/", views.export, name="export")
 ]

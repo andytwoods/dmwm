@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+
 {% block content %}
-  <h1>Marianna's business info cruncher</h1>
+  <h1 class="my-5">Paste the contents of the downloaded DueDil CSV file into the Data box</h1>
 
 
   <form action="" method="post">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
+   {% crispy form %}
 </form>
 {% endblock content %}

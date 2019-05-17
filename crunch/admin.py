@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Info
+from .models import ZohoInfo
 
 
 class StudyDataAdmin(admin.ModelAdmin):
-    model = Info
-    list_display = ['Company_Name', 'Employees', ]
+    model = ZohoInfo
+    list_display = ['Company',]
 
 
-admin.site.register(Info, StudyDataAdmin)
+admin.site.register(ZohoInfo, StudyDataAdmin)
