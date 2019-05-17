@@ -76,6 +76,7 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     "dmwm.users.apps.UsersConfig",
+    "crunch.apps.CrunchConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -263,3 +264,6 @@ SOCIALACCOUNT_ADAPTER = "dmwm.users.adapters.SocialAccountAdapter"
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800  # 50MB
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 2000  # double the default
