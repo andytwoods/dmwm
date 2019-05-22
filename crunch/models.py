@@ -60,6 +60,8 @@ class ZohoInfo(models.Model):
     Postal_Code = models.CharField(blank=True, max_length=255, null=True)
     Country = models.CharField(blank=True, max_length=255, null=True, default='UK')
     Last_Name = models.CharField(blank=True, max_length=255, null=True, default='n/a')
+    First_Name = models.CharField(blank=True, max_length=255, null=True, )
+    Job_Title = models.CharField(blank=True, max_length=255, null=True, )
 
     No_of_Employees = models.SmallIntegerField(blank=True, null=True)
     Year_Company_Was_Founded = models.IntegerField(blank=True, null=True)
