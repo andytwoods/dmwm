@@ -109,18 +109,6 @@ def export(request, queryset=None):
         data = list(queryset)
 
     headers = [f.name for f in ZohoInfo._meta.get_fields()]
-    try:
-        headers.remove('Ready_To_Zoho')
-    except ValueError:
-        pass
-    try:
-        headers.remove('Uploaded_To_Zoho')
-    except ValueError:
-        pass
-    try:
-        headers.remove('id')
-    except ValueError:
-        pass
 
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=expt_%s.csv' % datetime.strftime(
@@ -144,11 +132,15 @@ def export(request, queryset=None):
 
             # bleh, ugly bodge
             if header is 'Clusters_TTWA':
-                found = Clusters_TTWA_Choice_dict[found].replace('_', ' ')
+                found = Clusters_TTWA_Choice_dict[found]
             elif header is 'Company_Focus_Area':
-                found = Company_Focus_Area_Choice_dict[found].replace('_', ' ')
+                found = Company_Focus_Area_Choice_dict[found]
             elif header is 'Marginally_outside_cluster':
-                found = Marginally_outside_cluster_Choice_dict[found].replace('_', ' ')
+                found = Marginally_outside_cluster_Choice_dict[found]
+
+            if '_' in found or ' ' in found:
+                found = found.replace('_', ' ')
+                found = '"' + found + '"'
 
             row.append(found)
         writer.writerow(row)
