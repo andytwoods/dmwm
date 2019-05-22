@@ -17,7 +17,7 @@ urlpatterns = [
     path("users/", include("dmwm.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
-    path("crunch/", include("crunch.urls"))
+    path("import/", include("crunch.urls"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

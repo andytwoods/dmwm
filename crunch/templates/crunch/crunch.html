@@ -2,11 +2,44 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <h1 class="my-5">Paste the contents of the downloaded DueDil CSV file into the Data box</h1>
+  <h1 class="my-5">Drop file onto this browser window or paste the contents of file into the Data box</h1>
 
 
   <form action="" method="post">
     {% csrf_token %}
-   {% crispy form %}
-</form>
+    {% crispy form %}
+  </form>
 {% endblock content %}
+
+
+{% block javascript %}
+  {{ block.super }}
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+
+
+      // preventing page from redirecting
+      $("html").on("dragover", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+
+      $("html").on("drop", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var file = e.originalEvent.dataTransfer.files;
+        var info = file[0];
+
+        var reader = new FileReader();
+        reader.readAsText(info, "UTF-8");
+        reader.onload = function (evt) {
+          $('#id_data').val(evt.target.result)
+        }
+      });
+
+    });
+  </script>
+{% endblock %}

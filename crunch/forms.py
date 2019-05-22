@@ -3,7 +3,6 @@ from crispy_forms.layout import Submit
 from django import forms
 
 class CrunchForm(forms.Form):
-    name = forms.CharField()
     data = forms.CharField(widget=forms.Textarea,)
 
     def __init__(self, *args, **kwargs):

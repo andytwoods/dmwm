@@ -39,6 +39,9 @@ class Crunch(FormView):
 
         infos = []
         skip = 1
+
+        current_year = datetime.now().year
+
         for r in data.split('\n'):
             r = r.replace('\r', '')
 
@@ -75,6 +78,7 @@ class Crunch(FormView):
                 info.Trading_Post_Code = params.get('Trading_Address_Postcode', None)
                 # info.Company = params.get('Trading_Post_Town', None)
                 info.Website = params.get('Web_Address_1', None)
+                info.Year_Company_Was_Founded = current_year - int(params.get('Age', 0))
 
                 infos.append(info)
 
@@ -90,9 +94,18 @@ class Crunch(FormView):
 def export(request):
     data = list(ZohoInfo.objects.all())
     headers = [f.name for f in ZohoInfo._meta.get_fields()]
-    headers.remove('Ready_To_Zoho')
-    headers.remove('Uploaded_To_Zoho')
-    headers.remove('id')
+    try:
+        headers.remove('Ready_To_Zoho')
+    except ValueError:
+        pass
+    try:
+        headers.remove('Uploaded_To_Zoho')
+    except ValueError:
+        pass
+    try:
+        headers.remove('id')
+    except ValueError:
+        pass
 
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=expt_%s.csv' % datetime.strftime(
@@ -115,6 +128,5 @@ def export(request):
             found = getattr(info, header, None)
             row.append(found)
         writer.writerow(row)
-        break
 
     return response

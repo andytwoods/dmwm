@@ -42,8 +42,13 @@
           {% endfor %}
       {% endif %}
 
+    <div class="p-5">
+      <a class="btn btn-primary btn-lg" href="{% url 'crunch' %}">Upload data</a>
+  <a class="btn btn-warning btn-lg" href="{% url 'export' %}">Download Zoto data</a>
+  <a class="btn btn-danger btn-lg" href="/admin/">Data centre</a>
+</div>
       {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
+
       {% endblock content %}
 
     </div> <!-- /container -->
