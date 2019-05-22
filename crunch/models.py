@@ -2,37 +2,38 @@ from enum import Enum
 
 from django.db import models
 
+Clusters_TTWA_Choice = (
+    ('GA', "Guildford_and_Aldershot"),
+    ('HW', "High_Wycombe_and_Aylesbury"),
+    ('RE', "Reading"),
+    ('SH', "Slough_and_Heathrow")
+)
+# Clusters_TTWA_Choice_dict = {y: x for x, y in Clusters_TTWA_Choice}
 
-class Clusters_TTWA_Choice(Enum):
-    GA = "Guildford_and_Aldershot"
-    HW = "High_Wycombe_and_Aylesbury"
-    RE = "Reading"
-    SH = "Slough_and_Heathrow"
+Company_Focus_Area_Choice = (('AS', "Animation and SFX"),
+                             ('AC', "AR / VR / MR Content"),
+                             ('AH', "AR / VR / MR Hardware"),
+                             ('AU', "Audio"),
+                             ('CS', "Cultural Services"),
+                             ('DA', "Digital Agency"),
+                             ('FT', "Film / TV Production"),
+                             ('GA', "Gaming"),
+                             ('JO', "Journalism"),
+                             ('MA', "Marketing Agency"),
+                             ('NG', "Next Generation Technology"),
+                             ('OT', "Other"),
+                             ('TL', "Theatre / Life_Perf / Arts"),
+                             )
+
+# Company_Focus_Area_Choice_dict = {y: x for x, y in Company_Focus_Area_Choice}
+
+Marginally_outside_cluster_Choice = (('YE', "Yes"), ('NO', "No"))
 
 
-class Company_Focus_Area_Choice(Enum):
-    AS = "Animation and SFX"
-    AC = "AR / VR / MR Content"
-    AH = "AR / VR / MR Hardware"
-    AU = "Audio"
-    CS = "Cultural Services"
-    DA = "Digital Agency"
-    FT = "Film / TV Production"
-    GA = "Gaming"
-    JO = "Journalism"
-    MA = "Marketing Agency"
-    NG = "Next Generation Technology"
-    OT = "Other"
-    TL = "Theatre / Life_Perf / Arts"
-
-
-class Marginally_outside_cluster_Choice(Enum):
-    YE = "Yes"
-    NO = "No"
+# Marginally_outside_cluster_Choice_dict = {y: x for x, y in Marginally_outside_cluster_Choice}
 
 
 class ZohoInfo(models.Model):
-
     Company = models.CharField(blank=True, max_length=255, null=True)
     Trading_Address = models.CharField(blank=True, max_length=255, null=True)
     Trading_Town_City = models.CharField(blank=True, max_length=255, null=True)
@@ -47,12 +48,9 @@ class ZohoInfo(models.Model):
     Company_Reg_Number_or_UTR = models.CharField(blank=True, max_length=255, null=True)
     Your_Company_SIC_Code = models.CharField(blank=True, max_length=255, null=True)
 
-    Clusters_TTWA = models.CharField(max_length=5, choices=[(tag, tag.value) for tag in Clusters_TTWA_Choice])
-
-    Company_Focus_Area = models.CharField(max_length=5, choices=[(tag, tag.value) for tag in Company_Focus_Area_Choice])
-
-    Marginally_outside_cluster = models.CharField(max_length=5, choices=[(tag, tag.value) for tag in
-                                                                         Marginally_outside_cluster_Choice])
+    Clusters_TTWA = models.CharField(max_length=5, choices=Clusters_TTWA_Choice, null=True, blank=True)
+    Company_Focus_Area = models.CharField(max_length=5, choices=Company_Focus_Area_Choice, null=True, blank=True)
+    Marginally_outside_cluster = models.CharField(max_length=5, choices=Marginally_outside_cluster_Choice, null=True, blank=True)
 
     Unqualified_Status = models.CharField(blank=True, max_length=255, null=True)
     Unqualified_Source = models.CharField(blank=True, max_length=255, null=True)
@@ -68,4 +66,3 @@ class ZohoInfo(models.Model):
 
     Unqualified_Owner = models.CharField(blank=True, max_length=255, null=True, default='Marianna Rolbina')
     Unqualified_Owner_Id = models.IntegerField(blank=True, null=True, default='167499000000416001')
-

@@ -18,7 +18,7 @@ from crunch.forms import CrunchForm
 # Create your views here.
 from django.views.generic import FormView
 
-from crunch.models import ZohoInfo
+from crunch.models import ZohoInfo, Clusters_TTWA_Choice
 
 
 @method_decorator(login_required, name='dispatch')
@@ -89,7 +89,6 @@ class Crunch(FormView):
 
                 info.Unqualified_Status = 'Not Contacted'
                 info.Unqualified_Source = 'DueDil'
-
 
                 infos.append(info)
 
