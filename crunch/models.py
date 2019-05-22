@@ -8,7 +8,7 @@ Clusters_TTWA_Choice = (
     ('RE', "Reading"),
     ('SH', "Slough_and_Heathrow")
 )
-# Clusters_TTWA_Choice_dict = {y: x for x, y in Clusters_TTWA_Choice}
+Clusters_TTWA_Choice_dict = {x: y for x, y in Clusters_TTWA_Choice}
 
 Company_Focus_Area_Choice = (('AS', "Animation and SFX"),
                              ('AC', "AR / VR / MR Content"),
@@ -25,12 +25,12 @@ Company_Focus_Area_Choice = (('AS', "Animation and SFX"),
                              ('TL', "Theatre / Life_Perf / Arts"),
                              )
 
-# Company_Focus_Area_Choice_dict = {y: x for x, y in Company_Focus_Area_Choice}
+Company_Focus_Area_Choice_dict = {x: y for x, y in Company_Focus_Area_Choice}
 
 Marginally_outside_cluster_Choice = (('YE', "Yes"), ('NO', "No"))
 
 
-# Marginally_outside_cluster_Choice_dict = {y: x for x, y in Marginally_outside_cluster_Choice}
+Marginally_outside_cluster_Choice_dict = {x: y for x, y in Marginally_outside_cluster_Choice}
 
 
 class ZohoInfo(models.Model):

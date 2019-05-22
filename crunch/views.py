@@ -18,7 +18,8 @@ from crunch.forms import CrunchForm
 # Create your views here.
 from django.views.generic import FormView
 
-from crunch.models import ZohoInfo, Clusters_TTWA_Choice
+from crunch.models import ZohoInfo, Clusters_TTWA_Choice, Clusters_TTWA_Choice_dict, Company_Focus_Area_Choice_dict, \
+    Marginally_outside_cluster_Choice_dict
 
 
 @method_decorator(login_required, name='dispatch')
@@ -140,6 +141,15 @@ def export(request, queryset=None):
         row = []
         for header in headers:
             found = getattr(info, header, None)
+
+            # bleh, ugly bodge
+            if header is 'Clusters_TTWA':
+                found = Clusters_TTWA_Choice_dict[found].replace('_', ' ')
+            elif header is 'Company_Focus_Area':
+                found = Company_Focus_Area_Choice_dict[found].replace('_', ' ')
+            elif header is 'Marginally_outside_cluster':
+                found = Marginally_outside_cluster_Choice_dict[found].replace('_', ' ')
+
             row.append(found)
         writer.writerow(row)
 
