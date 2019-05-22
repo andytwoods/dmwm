@@ -87,6 +87,9 @@ class Crunch(FormView):
                 info.Company_Reg_Number_or_UTR = params.get('Company_Number', None)
                 info.Your_Company_SIC_Code = params.get('SIC_2007_Code', '') + '-' + params.get('SIC_2007_Description', '')
 
+                info.Unqualified_Status = 'Not Contacted'
+                info.Unqualified_Source = 'DueDil'
+
 
                 infos.append(info)
 
