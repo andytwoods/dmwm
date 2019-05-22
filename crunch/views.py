@@ -71,14 +71,17 @@ class Crunch(FormView):
 
                 # info.Company = params.get('SIC_2007_Description', None)
                 # info.Company = params.get('Trading_Address', None)
-                info.Trading_Address = params.get('Trading_Address_1', None)
-                info.Trading_Town_City = params.get('Trading_Address_2', None)
+                info.Trading_Address = params.get('Trading_Address', None)
+                info.Trading_Town_City = params.get('Trading_Post_Town', None)
                 info.Province = params.get('Trading_Address_3', None)
                 # info.Trading_Address = params.get('Trading_Address_4', None)
                 info.Trading_Post_Code = params.get('Trading_Address_Postcode', None)
                 # info.Company = params.get('Trading_Post_Town', None)
+
                 info.Website = params.get('Web_Address_1', None)
                 info.Year_Company_Was_Founded = current_year - int(params.get('Age', 0))
+
+                info.Registered_Address =
 
                 infos.append(info)
 
