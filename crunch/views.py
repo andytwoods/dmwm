@@ -131,12 +131,12 @@ def export(request, queryset=None):
             found = getattr(info, header, None)
 
             # bleh, ugly bodge
-            if header is 'Clusters_TTWA':
-                found = Clusters_TTWA_Choice_dict[found]
-            elif header is 'Company_Focus_Area':
-                found = Company_Focus_Area_Choice_dict[found]
-            elif header is 'Marginally_outside_cluster':
-                found = Marginally_outside_cluster_Choice_dict[found]
+            if header == 'Clusters_TTWA':
+                found = Clusters_TTWA_Choice_dict.get(found, '')
+            elif header == 'Company_Focus_Area':
+                found = Company_Focus_Area_Choice_dict.get(found, '')
+            elif header == 'Marginally_outside_cluster':
+                found = Marginally_outside_cluster_Choice_dict.get(found, '')
 
             if type(found) is str:
                 if'_' in found or ' ' in found:
