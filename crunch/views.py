@@ -101,8 +101,12 @@ class Crunch(FormView):
 
 
 @staff_member_required
-def export(request):
-    data = list(ZohoInfo.objects.all())
+def export(request, queryset=None):
+    if queryset is None:
+        data = list(ZohoInfo.objects.all())
+    else:
+        data = list(queryset)
+
     headers = [f.name for f in ZohoInfo._meta.get_fields()]
     try:
         headers.remove('Ready_To_Zoho')
