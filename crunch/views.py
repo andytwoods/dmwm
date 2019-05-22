@@ -138,9 +138,10 @@ def export(request, queryset=None):
             elif header is 'Marginally_outside_cluster':
                 found = Marginally_outside_cluster_Choice_dict[found]
 
-            if '_' in found or ' ' in found:
-                found = found.replace('_', ' ')
-                found = '"' + found + '"'
+            if type(found) is str:
+                if'_' in found or ' ' in found:
+                    found = found.replace('_', ' ')
+                    found = '"' + found + '"'
 
             row.append(found)
         writer.writerow(row)
