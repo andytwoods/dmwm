@@ -3,12 +3,15 @@ import re
 
 import unicodecsv as unicodecsv
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from csv import reader
 
 from django.utils.datetime_safe import datetime
+from django.utils.decorators import method_decorator
 
 from crunch.forms import CrunchForm
 
@@ -18,6 +21,7 @@ from django.views.generic import FormView
 from crunch.models import ZohoInfo
 
 
+@method_decorator(login_required, name='dispatch')
 class Crunch(FormView):
     template_name = 'crunch/crunch.html'
     form_class = CrunchForm
@@ -82,6 +86,7 @@ class Crunch(FormView):
         return super().form_valid(form)
 
 
+@staff_member_required
 def export(request):
     data = list(ZohoInfo.objects.all())
     headers = [f.name for f in ZohoInfo._meta.get_fields()]
