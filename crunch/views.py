@@ -120,7 +120,7 @@ def export(request, queryset=None):
     for header in headers:
         if '_' in header:
             header.replace('_', ' ')
-            header = '"' + header + '"'
+            # header = '"' + header + '"'
         zoho_headers.append(header)
 
     writer.writerow(zoho_headers)
@@ -141,7 +141,7 @@ def export(request, queryset=None):
             if type(found) is str:
                 if'_' in found or ' ' in found:
                     found = found.replace('_', ' ')
-                    found = '"' + found + '"'
+                    # found = '"' + found + '"'
 
             row.append(found)
         writer.writerow(row)
