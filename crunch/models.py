@@ -11,8 +11,8 @@ Clusters_TTWA_Choice = (
 Clusters_TTWA_Choice_dict = {x: y for x, y in Clusters_TTWA_Choice}
 
 Company_Focus_Area_Choice = (('AS', "Animation and SFX"),
-                             ('AC', "AR / VR / MR Content"),
-                             ('AH', "AR / VR / MR Hardware"),
+                             ('AC', "AR/VR/MR Content"),
+                             ('AH', "AR/VR/MR Hardware"),
                              ('AU', "Audio"),
                              ('CS', "Cultural Services"),
                              ('DA', "Digital Agency"),
@@ -22,7 +22,7 @@ Company_Focus_Area_Choice = (('AS', "Animation and SFX"),
                              ('MA', "Marketing Agency"),
                              ('NG', "Next Generation Technology"),
                              ('OT', "Other"),
-                             ('TL', "Theatre / Life_Perf / Arts"),
+                             ('TL', "Theatre/Life_Perf/Arts"),
                              )
 
 Company_Focus_Area_Choice_dict = {x: y for x, y in Company_Focus_Area_Choice}
