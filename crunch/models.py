@@ -27,10 +27,10 @@ Company_Focus_Area_Choice = (('AS', "Animation and SFX"),
 
 Company_Focus_Area_Choice_dict = {x: y for x, y in Company_Focus_Area_Choice}
 
-Marginally_outside_cluster_Choice = (('YE', "Yes"), ('NO', "No"))
+Within_Gateway_cluster_Choice = (('YE', "Yes"), ('NO', "No"), ('MA', "Marginal"))
 
 
-Marginally_outside_cluster_Choice_dict = {x: y for x, y in Marginally_outside_cluster_Choice}
+Within_Gateway_cluster_Choice_dict = {x: y for x, y in Within_Gateway_cluster_Choice}
 
 
 class ZohoInfo(models.Model):
@@ -50,7 +50,7 @@ class ZohoInfo(models.Model):
 
     Clusters_TTWA = models.CharField(max_length=5, choices=Clusters_TTWA_Choice, null=True, blank=True)
     Company_Focus_Area = models.CharField(max_length=5, choices=Company_Focus_Area_Choice, null=True, blank=True)
-    Marginally_outside_cluster = models.CharField(max_length=5, choices=Marginally_outside_cluster_Choice, null=True, blank=True)
+    Within_Gateway_cluster = models.CharField(max_length=5, choices=Within_Gateway_cluster_Choice, null=True, blank=True)
 
     Unqualified_Status = models.CharField(blank=True, max_length=255, null=True)
     Unqualified_Source = models.CharField(blank=True, max_length=255, null=True)

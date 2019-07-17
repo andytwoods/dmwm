@@ -19,7 +19,7 @@ from crunch.forms import CrunchForm
 from django.views.generic import FormView
 
 from crunch.models import ZohoInfo, Clusters_TTWA_Choice, Clusters_TTWA_Choice_dict, Company_Focus_Area_Choice_dict, \
-    Marginally_outside_cluster_Choice_dict
+    Within_Gateway_cluster_Choice_dict, Within_Gateway_cluster_Choice_dict
 
 
 @method_decorator(login_required, name='dispatch')
@@ -135,8 +135,8 @@ def export(request, queryset=None):
                 found = Clusters_TTWA_Choice_dict.get(found, '')
             elif header == 'Company_Focus_Area':
                 found = Company_Focus_Area_Choice_dict.get(found, '')
-            elif header == 'Marginally_outside_cluster':
-                found = Marginally_outside_cluster_Choice_dict.get(found, '')
+            elif header == 'Within_Gateway_cluster':
+                found = Within_Gateway_cluster_Choice_dict.get(found, '')
 
             if type(found) is str:
                 if'_' in found or ' ' in found:
