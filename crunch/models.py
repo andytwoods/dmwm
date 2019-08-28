@@ -28,6 +28,7 @@ Company_Focus_Area_Choice = (('AS', "Animation and SFX"),
 Company_Focus_Area_Choice_dict = {x: y for x, y in Company_Focus_Area_Choice}
 
 Within_Gateway_cluster_Choice = (('YE', "Yes"), ('NO', "No"), ('MA', "Marginal"))
+Within_Gateway_cluster_Choice_dict = {x: y for x, y in Within_Gateway_cluster_Choice}
 
 Unqualified_type_Choice = (('ST', "Sole Trader/Individual"),
                            ('HE', "HEI"),
@@ -35,11 +36,10 @@ Unqualified_type_Choice = (('ST', "Sole Trader/Individual"),
                            ('IP', "Industry Partner"),
                            ('SO', "Support Org"),
                            )
+Unqualified_type_Choice_dict = {x: y for x, y in Unqualified_type_Choice}
 
 Experience_in_immersive = (('NO', "Novice"), ('IN', "Intermediate"), ('EX', "Expert"))
-
-Within_Gateway_cluster_Choice_dict = {x: y for x, y in Within_Gateway_cluster_Choice}
-
+Experience_in_immersive_dict = {x: y for x, y in Experience_in_immersive}
 
 class ZohoInfo(models.Model):
     Company = models.CharField(blank=True, max_length=255, null=True)
@@ -72,7 +72,7 @@ class ZohoInfo(models.Model):
     Company_Reg_Number_or_UTR = models.CharField(blank=True, max_length=255, null=True)
     Your_Company_SIC_Code = models.CharField(blank=True, max_length=255, null=True)
     About_the_Company = models.CharField(blank=True, max_length=455, null=True)
-    Experience_in_immersive = models.Charfield(ax_length=5, choices=Experience_in_immersive, null=True, blank=True)
+    Experience_in_immersive = models.CharField(max_length=5, choices=Experience_in_immersive, null=True, blank=True)
     Year_Company_Was_Founded = models.IntegerField(blank=True, null=True)
 
     Unqualified_Status = models.CharField(blank=True, max_length=255, null=True)
