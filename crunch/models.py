@@ -24,7 +24,6 @@ Company_Focus_Area_Choice = (('AS', "Animation and SFX"),
                              ('OT', "Other"),
                              ('TL', "Theatre/Life_Perf/Arts"),
                              )
-
 Company_Focus_Area_Choice_dict = {x: y for x, y in Company_Focus_Area_Choice}
 
 Within_Gateway_cluster_Choice = (('YE', "Yes"), ('NO', "No"), ('MA', "Marginal"))
