@@ -70,7 +70,7 @@ class ZohoInfo(models.Model):
     Company_Focus_Area_Detail = models.CharField(blank=True, max_length=255, null=True)
     Company_Reg_Number_or_UTR = models.CharField(blank=True, max_length=255, null=True)
     Your_Company_SIC_Code = models.CharField(blank=True, max_length=255, null=True)
-    About_the_Company = models.CharField(blank=True, max_length=455, null=True)
+    About_the_Company = models.TextField(blank=True, null=True)
     Experience_in_immersive = models.CharField(max_length=5, choices=Experience_in_immersive, null=True, blank=True)
     Year_Company_Was_Founded = models.IntegerField(blank=True, null=True)
 
